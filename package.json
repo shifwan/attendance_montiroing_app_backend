@@ -1,0 +1,20 @@
+{
+  "name": "kiit-sss-api-serverless",
+  "version": "1.0.0",
+  "description": "This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.",
+  "main": "index.js",
+  "scripts": {
+    "pretty": "prettier --write .",
+    "predeploy": "npm run pretty && sam build",
+    "deploy": "sam deploy"
+  },
+  "author": "saikat0511",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.43.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.8.0",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.8"
+  }
+}

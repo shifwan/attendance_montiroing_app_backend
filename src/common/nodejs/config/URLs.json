@@ -1,0 +1,5 @@
+{
+  "loginURL": "https://kiitportal.kiituniversity.net/irj/portal",
+  "baseURL": "https://wdprd.kiituniversity.net:8001",
+  "attendanceURL": "https://wdprd.kiituniversity.net:8001/sap/bc/webdynpro/sap/ZWDA_HRIQ_ST_ATTENDANCE"
+}

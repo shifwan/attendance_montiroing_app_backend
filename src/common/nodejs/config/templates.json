@@ -1,0 +1,8 @@
+{
+  "postBody": {
+    "sap-charset": "<placeholder>",
+    "sap-wd-secure-id": "<placeholder>",
+    "fesrAppName": "<placeholder>",
+    "SAPEVENTQUEUE": "ClientInspector_Notify~E002Id~E004WD01~E005Data~E004ClientWidth~003A1536px~003BClientHeight~003A740px~003BScreenWidth~003A1536px~003BScreenHeight~003A864px~003BScreenOrientation~003Alandscape~003BThemedFormLayoutRowHeight~003A27px~003BThemedSvgLibUrls~003A~007B~007D~003BThemeTags~003AUiGuidelines_2~003BDeviceType~003ADESKTOP~E003~E002ResponseData~E004delta~E005EnqueueCardinality~E004single~E003~E002~E003~E001LoadingPlaceHolder_Load~E002Id~E004_loadingPlaceholder_~E003~E002ResponseData~E004delta~E005ClientAction~E004submit~E003~E002~E003"
+  }
+}

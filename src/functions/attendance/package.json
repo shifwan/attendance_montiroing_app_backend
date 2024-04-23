@@ -1,0 +1,19 @@
+{
+  "name": "kiit-sss-api",
+  "version": "1.0.0",
+  "description": "An express API that scrapes KIIT SAP SSS portal",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saikat0511/KIIT-SSS-API.git"
+  },
+  "author": "saikat0511",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/saikat0511/KIIT-SSS-API/issues"
+  },
+  "homepage": "https://github.com/saikat0511/KIIT-SSS-API#readme",
+  "dependencies": {
+    "yup": "^1.2.0"
+  }
+}

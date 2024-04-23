@@ -1,0 +1,89 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  KIIT-SSS-API-serverless
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    MemorySize: 256
+    Timeout: 5
+
+Resources:
+  attendanceFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/functions/attendance/
+      Handler: handler.lambdaHandler
+      Layers:
+        - !Ref CommonLayer
+      Runtime: nodejs18.x
+      Architectures:
+        - x86_64
+      Events:
+        attendance:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /api/v1/attendance
+            Method: post
+  cookieFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/functions/cookie/
+      Handler: handler.lambdaHandler
+      Layers:
+        - !Ref CommonLayer
+      Runtime: nodejs18.x
+      Architectures:
+        - x86_64
+      Events:
+        attendance:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /api/v1/cookie
+            Method: post
+  infoFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/functions/info/
+      Handler: handler.lambdaHandler
+      Layers:
+        - !Ref CommonLayer
+      Runtime: nodejs18.x
+      Architectures:
+        - x86_64
+      Events:
+        attendance:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /api/v1/info
+            Method: post
+  CommonLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: KIIT-SSS-API-dependencies
+      Description: Dependencies for KIIT-SSS-API
+      ContentUri: src/common
+      CompatibleRuntimes:
+        - nodejs18.x
+      # LicenseInfo: 'MIT'
+      # RetentionPolicy: Retain
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  AttendanceURL:
+    Description: "API Gateway endpoint URL for Prod stage for attendance function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/v1/attendance"
+  CookieURL:
+    Description: "API Gateway endpoint URL for Prod stage for cookie function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/v1/cookie"
+  InfoURL:
+    Description: "API Gateway endpoint URL for Prod stage for info function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/api/v1/info"
+  # HelloWorldFunction:
+  #   Description: "Hello World Lambda Function ARN"
+  #   Value: !GetAtt HelloWorldFunction.Arn
+  # HelloWorldFunctionIamRole:
+  #   Description: "Implicit IAM Role created for Hello World function"
+  #   Value: !GetAtt HelloWorldFunctionRole.Arn
